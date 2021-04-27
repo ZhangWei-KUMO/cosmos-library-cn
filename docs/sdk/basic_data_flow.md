@@ -21,23 +21,48 @@ title: 你好 IBC
 curl https://get.starport.network/starport@v0.15.1! | bash
  ```
 
- 安装成功后，提示信息如下：
+ ### 可能出现的bug
 
- ```bash
-Installed at /usr/local/bin/starport
+由于starport依赖本地机器安装protoc包，所以针对不同的系统还需安装protoc
+
+```bash
+# Linux
+apt install -y protobuf-compiler
+# MacOS
+brew install protobuf
+```
+
+导出环境变量
+
+```bash
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOROOT:$GOPATH:$GOBIN
  ```
-
- ## 创建区块链应用
+## 创建区块链应用
 
 ### 1. 创建一个区块链
 
 我们给这个区块链命名为`planet`:
 
 ```bash
+# 生成一个叫planet的项目
 starport app github.com/user/planet
-cd planet
+cd planet 
+# 构建项目，时间比较久
+starport serve
 ```
 
+成功后，starport会创建两个个叫`alice`和`bob`的账户和它们的哈希值地址，以及一组用于找回密码的助记词（mnemonic）。
+的账户会生成四个进程：
+
+1. 基于Tendermint的`planet`应用，端口号为：26657；
+2. LCD服务端，端口为1317
+3. 水龙头（faucet）端口为4500
+4. 客户端，端口为12345
+   
+   
 ### 2. 在区块链中搭建一个博客模块
 
 接下来，使用`Starport`搭建具有IBC功能的博客模块。博客模块包含用于创建博客帖子并将其通过IBC路由到第二个区块链的逻辑。 要搭建一个名为`blog`的模块，请执行以下操作:

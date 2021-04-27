@@ -30,7 +30,7 @@ export default class Article extends React.Component {
     const LOGO = "https://self-1253763202.cos.ap-chengdu.myqcloud.com/app/cosmos-icon.png";
     wx.ready(() => {
       // 分享文章给朋友
-      updateAppMessageShareData(href, title, LOGO, "Redux文档随手翻阅");
+      updateAppMessageShareData(href, title, LOGO, "Cosmos Blockchain");
       // 分享文章到朋友圈
       updateTimelineShareData(href, title, LOGO);
     });
@@ -48,7 +48,7 @@ export default class Article extends React.Component {
       console.log(title);
       wx.ready(() => {
         // 分享文章给朋友
-        updateAppMessageShareData(href, title, LOGO, "Redux文档随手翻阅");
+        updateAppMessageShareData(href, title, LOGO, "Cosmos Blockchain");
         // 分享文章到朋友圈
         updateTimelineShareData(href, title, LOGO);
       });
