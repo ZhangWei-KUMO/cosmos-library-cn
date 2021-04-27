@@ -4,7 +4,7 @@ import { getChildren } from "jsonml.js/lib/utils";
 import { Timeline, Alert, Affix } from "antd";
 import config from "../../../bisheng.config";
 import { onResourceClick } from "../utils/pageListener";
-import executeSdk from '../utils/wechat';
+import executeSdk from "../utils/wechat";
 import { updateAppMessageShareData, updateTimelineShareData } from "../utils/share";
 import getModuleData from "../utils/getModuleData";
 
@@ -27,7 +27,7 @@ export default class Article extends React.Component {
     const { locale } = intl;
 
     executeSdk(href);
-    const LOGO = "https://redux.js.org/img/redux.svg";
+    const LOGO = "https://self-1253763202.cos.ap-chengdu.myqcloud.com/app/cosmos-icon.png";
     wx.ready(() => {
       // 分享文章给朋友
       updateAppMessageShareData(href, title, LOGO, "Redux文档随手翻阅");
@@ -44,8 +44,8 @@ export default class Article extends React.Component {
       const { href } = window.location;
       const { locale } = intl;
       executeSdk(href);
-      const LOGO = "https://redux.js.org/img/redux.svg";
-      console.log(title)
+      const LOGO = "https://self-1253763202.cos.ap-chengdu.myqcloud.com/app/cosmos-icon.png";
+      console.log(title);
       wx.ready(() => {
         // 分享文章给朋友
         updateAppMessageShareData(href, title, LOGO, "Redux文档随手翻阅");
@@ -54,6 +54,7 @@ export default class Article extends React.Component {
       });
     }
   }
+
   getArticle(article) {
     const { content } = this.props;
 

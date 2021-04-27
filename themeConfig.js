@@ -1,5 +1,5 @@
 const baseConfig = {
-  logo: "https://redux.js.org/img/redux.svg",
+  logo: "https://self-1253763202.cos.ap-chengdu.myqcloud.com/app/cosmos-icon.png",
   projectName: "COSMOS区块链知识库",
   homeUrl: "/getting-started-cn.html",
   library: "https://tutorials.cosmos.network/blog/tutorial/03-starport-type.html",
