@@ -9,7 +9,7 @@ const baseConfig = {
 
 const themeConfig = {
   categoryOrder: {
-    简介: 1,
+    跨链: 1,
     "COSMOS SDK 教程": 2,
     "COSMO Hub": 3,
     补充内容: 3
