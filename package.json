@@ -1,6 +1,6 @@
 {
   "name": "cosmos-library-cn",
-  "version": "V0.4.0",
+  "version": "V0.1.1",
   "description": "a public cosmos library in Chinese",
   "main": "index.js",
   "private": true,
