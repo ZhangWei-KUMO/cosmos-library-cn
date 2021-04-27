@@ -1,6 +1,6 @@
 {
   "name": "cosmos-library-cn",
-  "version": "V0.40",
+  "version": "V0.4.0",
   "description": "a public cosmos library in Chinese",
   "main": "index.js",
   "private": true,
@@ -26,7 +26,6 @@
     "rc-drawer": "^4.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-dynamic-vector-icons": "^0.0.7",
     "react-helmet": "6.1.0",
     "react-intl": "^4.7.6",
     "react-router": "3.2.4",
