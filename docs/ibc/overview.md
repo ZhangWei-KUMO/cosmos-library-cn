@@ -29,11 +29,11 @@ IBC客户端是轻客户端（绑定了一个唯一的client-id）,它会追踪�
 
 在IBC中，区块链并不在网络中直接通信。相反，某个链会向一个规定的消息类型和特定的对手链的预订路径提交某些状态（比如在handshake部分中添加特定的connectionEnd，或者将packets中继到对手链的某个module中）。
 
-relayer prcoess会监听这些paths的更新，并中继传递消息。将存储在paths下的数据连同证明提交给交易对手链。所有的IBC提交消息的实现都定义在[ICS-24]()中, 所有生成证明验证格式则放在[ICS-23]()中。
+relayer prcoess会监听这些paths的更新，并中继传递消息。将存储在paths下的数据连同证明提交给交易对手链。所有的IBC提交消息的实现都定义在[ICS-24](https://google.com)中, 所有生成证明验证格式则放在[ICS-23](https://google.com)中。
 
 ### Capabilities
 
-由于IBC的执行环境为模块间互不信任，所以ports和channels上模块行为必须要得到验证，只有具有适当权限的模块才能使用它们。整个过程是通过[dynamic capabilities]()完成的。在绑定port或为module创建channel之后，IBC将会返回dynamic capabilities, module必须声明以及使用了哪个port和channel，它们都有独立的`portID`和`channelID`，以防止被其他module重复使用。
+由于IBC的执行环境为模块间互不信任，所以ports和channels上模块行为必须要得到验证，只有具有适当权限的模块才能使用它们。整个过程是通过[dynamic capabilities](https://google.com)完成的。在绑定port或为module创建channel之后，IBC将会返回dynamic capabilities, module必须声明以及使用了哪个port和channel，它们都有独立的`portID`和`channelID`，以防止被其他module重复使用。
 
 上述介绍的这些背景信息，在实际的IBC模块的开发中并不会与之打交道。IBC应用从本质上来说是一个独立的module。开发者可以将module视为一个互联网中的一个app，portID类似于IP port，而channelID类似于IP address。
 
