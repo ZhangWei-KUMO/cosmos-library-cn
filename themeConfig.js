@@ -13,7 +13,9 @@ const themeConfig = {
     "COSMOS SDK 教程": 2,
     "COSMO Hub": 3,
     补充内容: 4,
-    架构: 4
+    Introduction: 0,
+    架构: 5,
+    Tendermint: 6
   },
   typeOrder: {
     基础教程: 2,
