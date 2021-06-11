@@ -15,7 +15,8 @@ const themeConfig = {
     补充内容: 4,
     Introduction: 0,
     架构: 5,
-    Tendermint: 6
+    Tendermint: 6,
+    faq: 7
   },
   typeOrder: {
     基础教程: 2,

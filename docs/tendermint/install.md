@@ -4,61 +4,107 @@ order: 0
 title: Install
 ---
 
-## 三种安装方式
+> 本教程Go语言版本1.16.5
 
-### 下载pre-build包
-首先去以下链接中下载预构建包：https://github.com/tendermint/tendermint/releases;
-
-### Brew安装
-对于Mac用户可以借助brew安装：
+创建一个项目:
 
 ```bash
-brew install tendermint
-```
-
-> Tendermint是基于go语言编写，所以需要运行机器中已经安装好go，并export好相关环境变量。
-
-### Git安装
-
-```bash
-git clone https://github.com/tendermint/tendermint.git
+mkdir tendermint
 cd tendermint
-make install
-make build
+touch app.go
 ```
 
-以上无论哪种安装方式，我们最终检测是否安装成功：
+将下面tendermint core代码粘贴进去，原地址：https://docs.tendermint.com/master/tutorials/go.html#_1-3-writing-a-tendermint-core-application
 
-```bash
-# 成功后会输出版本号，编写本文档时为0.34.10
-tendermint version
+```go
+package main
 
-# 查询tendermint 命令行的帮助，这个很重要因为他们的flag经常换
-tendermint node --help
+import (
+ abcitypes "github.com/tendermint/tendermint/abci/types"
+)
+
+type KVStoreApplication struct {}
+
+var _ abcitypes.Application = (*KVStoreApplication)(nil)
+
+func NewKVStoreApplication() *KVStoreApplication {
+ return &KVStoreApplication{}
+}
+
+func (KVStoreApplication) Info(req abcitypes.RequestInfo) abcitypes.ResponseInfo {
+ return abcitypes.ResponseInfo{}
+}
+
+func (KVStoreApplication) DeliverTx(req abcitypes.RequestDeliverTx) abcitypes.ResponseDeliverTx {
+ return abcitypes.ResponseDeliverTx{Code: 0}
+}
+
+func (KVStoreApplication) CheckTx(req abcitypes.RequestCheckTx) abcitypes.ResponseCheckTx {
+ return abcitypes.ResponseCheckTx{Code: 0}
+}
+
+func (KVStoreApplication) Commit() abcitypes.ResponseCommit {
+ return abcitypes.ResponseCommit{}
+}
+
+func (KVStoreApplication) Query(req abcitypes.RequestQuery) abcitypes.ResponseQuery {
+ return abcitypes.ResponseQuery{Code: 0}
+}
+
+func (KVStoreApplication) InitChain(req abcitypes.RequestInitChain) abcitypes.ResponseInitChain {
+ return abcitypes.ResponseInitChain{}
+}
+
+func (KVStoreApplication) BeginBlock(req abcitypes.RequestBeginBlock) abcitypes.ResponseBeginBlock {
+ return abcitypes.ResponseBeginBlock{}
+}
+
+func (KVStoreApplication) EndBlock(req abcitypes.RequestEndBlock) abcitypes.ResponseEndBlock {
+ return abcitypes.ResponseEndBlock{}
+}
+
+func (KVStoreApplication) ListSnapshots(abcitypes.RequestListSnapshots) abcitypes.ResponseListSnapshots {
+ return abcitypes.ResponseListSnapshots{}
+}
+
+func (KVStoreApplication) OfferSnapshot(abcitypes.RequestOfferSnapshot) abcitypes.ResponseOfferSnapshot {
+ return abcitypes.ResponseOfferSnapshot{}
+}
+
+func (KVStoreApplication) LoadSnapshotChunk(abcitypes.RequestLoadSnapshotChunk) abcitypes.ResponseLoadSnapshotChunk {
+ return abcitypes.ResponseLoadSnapshotChunk{}
+}
+
+func (KVStoreApplication) ApplySnapshotChunk(abcitypes.RequestApplySnapshotChunk) abcitypes.ResponseApplySnapshotChunk {
+ return abcitypes.ResponseApplySnapshotChunk{}
+}
 ```
 
-## 启动一个简单的单节点区块链
+安装依赖包,并构建二进制文件
 
 ```bash
-# 初始化一个验证节点
+go mod tidy    
+go build
+```
+
+初始化验证者节点，并启动
+
+```bash
 tendermint init validator
+# 启动
+tendermint start --proxy_app=kvstore
 ```
 
-之后tendermint会生成一个私有验证者，节点key，genesis创世文件。这三个都是以JSON格式存储在`$HOME/.tendermint`文件夹中。
-分别为：
+## 使用区块链
 
+打开一个新的shell,写入一个键值对
 ```bash
-/data/priv_validator_state.json
-/config/node_key.json
-/config/genesis.json
+curl -s 'localhost:26657/broadcast_tx_commit?tx="nextstation=zhongshanling"'
 ```
 
+查询
 ```bash
-tendermint start proxy_app=kvstore
+curl -s 'localhost:26657/abci_query?data="nextstation"'
 ```
-如果一切顺利，那么恭喜你tendermint安装成功。
 
-## 常见bug
-
-与go的环境变量不兼容，
-
+如果存在会返回键值对的ASCII的base64编码
