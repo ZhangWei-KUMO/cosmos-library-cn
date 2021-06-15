@@ -1,24 +1,31 @@
 ---
-category: 跨链
-order: 0
-title: 简介
+category: Starport
+order: 1
+title: 开始
 ---
 
-在本教程中，您将学习如何创建一个Cosmos SDK模块，该模块可以创建订单、买卖。您将能够在整个区块链上创建订单簿、买卖，从而能够将token从一个区块链交换到另一个区块链。
+![](https://img.shields.io/badge/go-v1.16.5-blue)
+![](https://img.shields.io/badge/starpot-v0.15.1-green)
 
-> 本教程中的代码纯粹是为教程编写的，仅用于教育目的。不建议用于生产中。如果你想获取本教案的源代码，可[点击下载](https://github.com/tendermint/interchange)
+很多开源框架为了开发者拥有更好的开发效率都会提供一键启动的脚手架工具，cosmos也不例外。Cosmos的脚手架名为Starport，开发者可以通过它生成空项目、转账、启动IBC协议等功能，下面就是它的功能列表
 
-通过本教案的学习，您将掌握：
+|命令行|功能|解释|
+|---:|---:|---:|
+|`starport app [APP_ADDRESS]`|生成一个空应用|starport自身集成了一些简单的应用模板，如：starport app github.com/alice/blog|
+|`starport build`|构建和安装一个应用以及相关依赖||
+|`starport faucet`|生成一个空应用||
+|`starport message`|生成一个空消息||
+|`starport module`|为当前应用管理cosmos||
+|`starport packet`|创建一个IBC数据包||
+|`starport relayer configure`|为中继服务配置目标链和源链||
+|`starport relayer connect`|为中继服务配置目标链和源链||
+|`starport relayer rly`|非常底层的命令配置，一般不用。详情：github.com/cosmos/relayer||
+|`starport type`|生成一个CRUD类型||
+|`starport version`|查看starport版本号||
+|`starport help`|查看帮助列表||
 
-* 使用Starport创建一个自己的区块链；
-* 创建一个自己的Cosmos SDK IBC模块；
-* 使用模块创建一个买卖订单实现跨链通信；
-* 处理packets的超时与确认。
+## 安装 Starport
 
-## 模块是如何工作的
-
-您将学习如何建立可与两个或多个区块链一起使用的交易所。该模块称为`ibcdex`。该模块允许打开一个区块链上的一对令牌与另一个区块链上的令牌之间的交换订单簿。要求区块链具有ibcdex模块可用。可以在简单的订单簿上使用限价订单买卖代币。
-
-> 注意：这里没有流动性池（Liquidity Pool ）或AMM的概念。
-
-该市场具有单向性，即在原链上售出后的token无法原样回购，从目标链上购买的token也不能卖回目标链。假设我们在原链上售出了一个token，如果我们想对其进行回购则必须在订单（order book）上创建一个新的pair，这是由于IBC的特性所决定的，即IBC会在目标链上创建`voucher` Token
+```bash
+curl https://get.starport.network/starport! | bash
+```

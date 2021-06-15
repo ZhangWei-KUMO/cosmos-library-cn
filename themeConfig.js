@@ -9,11 +9,11 @@ const baseConfig = {
 
 const themeConfig = {
   categoryOrder: {
-    IBC: 1,
+    StarPort: 0,
+    Gaia: 1,
     "COSMOS SDK 教程": 2,
-    "COSMO Hub": 3,
+    IBC: 3,
     补充内容: 4,
-    Introduction: 0,
     架构: 5,
     Tendermint: 6,
     faq: 7
