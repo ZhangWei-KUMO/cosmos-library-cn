@@ -21,3 +21,16 @@ cd $HOME/.gaia/config
 cp -f genesis.json new_genesis.json
 mv new_genesis.json genesis.json
 ```
+
+## 将state暴露给新的genesis.json
+
+```bash
+cd $HOME/.gaia/config
+gaiad export --for-zero-height --height=<export-height> > new_genesis.json
+```
+
+```bash
+cp -f genesis.json new_genesis.json
+mv new_genesis.json genesis.json
+gaiad start
+```

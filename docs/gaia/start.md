@@ -216,7 +216,7 @@ gaiad init <MONIKER_NAME>
 
 ```bash
 # 比如我们将区块链的id取名hefei-chain
-gaiad init first_node --chain-id hefei-chain
+gaiad init first --chain-id hefei-chain
 # 对于已有的genesis.json我们也可以复写
 gaiad init second --overwrite
 # 更多flags请输入
@@ -229,4 +229,15 @@ gaiad init -h
 gaiad start
 ## 当然您可能会遇到以下报错
 ## Error: error during handshake: error on replay: validator set is nil in genesis and still empty after InitChain
+# 清除历史记录
+gaiad unsafe-reset-all
+rm /home/ubuntu/.gaia/config/genesis.json
 ```
+
+## Gas&Fees
+
+在
+
+## state修剪
+
+对于`pruning`参数的调整，

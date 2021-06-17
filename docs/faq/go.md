@@ -3,6 +3,8 @@ category: faq
 order: 0
 title: Go的环境变量设置
 ---
+### 1. gaiad: command not found
+
 
 Tendermint是一个由go语言编写的项目，对于Go语言环境变量的设置尤为重要。在Go的环境变量中最为重要的两个环境变量为`GOROOT`和`GOPATH`。`GOROOT`是Go的安装路径，而`GOPATH`则是go编译后二进制文件的存放地和在使用go编程时导入package的搜索路径，其内部包含三个主要目录：
 
@@ -13,10 +15,12 @@ Tendermint是一个由go语言编写的项目，对于Go语言环境变量的设
 与其他编程语言go语言需要在`~/.bash_profile`文件中`export`变量:
 
 ```bash
-GOROOT=/usr/local/go
-export GOROOT
-export $PATH:$GOROOT/bin
-export $PATH:$GOPATH/bin
+GOPATH=$HOME/go
+PATH=$GOPATH/bin:$PATH
+```
+刷新
+```bash
+source ~/.bash_profile
 ```
 ## 确保Go的安装配置
 
