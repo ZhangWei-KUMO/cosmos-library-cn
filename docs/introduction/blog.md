@@ -1,5 +1,5 @@
 ---
-category: Starport
+category: StarPort
 order: 2
 title: 快速启动一个简单的区块链博客
 ---
