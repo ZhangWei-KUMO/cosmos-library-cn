@@ -177,5 +177,6 @@ init:
 
 `genesis.json`是基于`config.yml`文件的配置在区块链启动时自动生成的文件。
 
-————————
+---------
+
 参考资料：https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units
